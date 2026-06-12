@@ -40,16 +40,16 @@ header {
 
 .header-block {
     position: relative;
-    background-color: rgba(238, 238, 238, 0.8);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(221, 221, 221, 0.8);
+    background-color: rgba(238, 238, 238, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(221, 221, 221, 0.5);
     padding: 6px 12px;
     font-size: 14px;
     font-weight: 400;
     display: flex;
     align-items: center;
-    color: #111111;
+    color: #1F2124;
     border-radius: 6px;
     pointer-events: auto;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
@@ -79,11 +79,25 @@ nav {
 }
 
 @keyframes tagline-marquee {
-    0%   { transform: translateX(0); }
-    40%  { transform: translateX(0); }
-    60%  { transform: translateX(var(--marquee-dist, 0px)); }
-    90%  { transform: translateX(var(--marquee-dist, 0px)); }
-    100% { transform: translateX(0); }
+    0% {
+        transform: translateX(0);
+    }
+
+    40% {
+        transform: translateX(0);
+    }
+
+    60% {
+        transform: translateX(var(--marquee-dist, 0px));
+    }
+
+    90% {
+        transform: translateX(var(--marquee-dist, 0px));
+    }
+
+    100% {
+        transform: translateX(0);
+    }
 }
 
 /* --- Desktop + Tablet: modal seamless transition --- */
@@ -139,10 +153,10 @@ nav {
 
 .nav-btn {
     position: relative;
-    background-color: rgba(238, 238, 238, 0.8);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(221, 221, 221, 0.8);
+    background-color: rgba(238, 238, 238, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(221, 221, 221, 0.5);
     padding: 6px 14px;
     font-family: inherit;
     font-size: 14px;
@@ -162,7 +176,7 @@ nav {
 }
 
 .nav-btn .count {
-    background-color: #111111;
+    background-color: #1F2124;
     color: #FFFFFF;
     padding: 2px 6px;
     font-size: 14px;
@@ -171,14 +185,14 @@ nav {
 }
 
 .nav-btn.active {
-    background-color: #111111;
+    background-color: #1F2124;
     color: #FFFFFF;
-    border-color: #111111;
+    border-color: #1F2124;
 }
 
 .nav-btn.active .count {
     background-color: #FFFFFF;
-    color: #111111;
+    color: #1F2124;
 }
 
 /* --- Page Title --- */
@@ -188,7 +202,7 @@ nav {
     letter-spacing: -0.01em;
     margin-top: 28px;
     margin-bottom: 28px;
-    color: #111111;
+    color: #1F2124;
     text-transform: uppercase;
 }
 
@@ -238,7 +252,7 @@ nav {
     justify-content: space-between;
     padding: 2px;
     font-size: 14px;
-    color: #111111;
+    color: #1F2124;
 }
 
 .project-gallery {
@@ -248,33 +262,40 @@ nav {
 }
 
 @media (min-width: 769px) {
+
     /* layout-2 hugs content, layout-3 is full width */
     .project-card-container.layout-2 {
         width: fit-content;
         max-width: 100%;
     }
+
     .project-card-container.layout-3 {
         width: 100%;
     }
+
     /* layout-2 hugs content, layout-3 always full-width */
     .project-card-container.layout-2 .project-gallery {
         width: fit-content;
         max-width: 100%;
     }
+
     .project-card-container.layout-3 .project-gallery {
         width: 100%;
     }
+
     .project-gallery {
         display: flex;
         gap: 6px;
         height: 420px;
     }
+
     .media-frame {
         height: 100%;
         width: auto;
         flex-shrink: 1;
         min-width: 0;
     }
+
     .project-card-container.layout-3 .media-frame {
         flex: 1;
     }
@@ -285,10 +306,12 @@ nav {
     height: auto;
     display: block;
 }
+
 .project-single-grid .media-frame {
     width: 100%;
     position: relative;
 }
+
 .project-single-grid .media-frame img,
 .project-single-grid .media-frame video {
     position: absolute;
@@ -389,7 +412,8 @@ nav {
 .experiment-item {
     break-inside: avoid;
     margin-bottom: 16px;
-    display: inline-block; /* required for CSS column flow */
+    display: inline-block;
+    /* required for CSS column flow */
     width: 100%;
 }
 
@@ -427,10 +451,34 @@ nav {
 }
 
 /* Responsive */
-@media (max-width: 1400px) { .experiments-masonry { column-count: 4; } }
-@media (max-width: 1100px) { .experiments-masonry { column-count: 3; } }
-@media (max-width: 768px)  { .experiments-masonry { column-count: 2; column-gap: 10px; } .experiment-item { margin-bottom: 10px; } }
-@media (max-width: 480px)  { .experiments-masonry { column-count: 2; } }
+@media (max-width: 1400px) {
+    .experiments-masonry {
+        column-count: 4;
+    }
+}
+
+@media (max-width: 1100px) {
+    .experiments-masonry {
+        column-count: 3;
+    }
+}
+
+@media (max-width: 768px) {
+    .experiments-masonry {
+        column-count: 2;
+        column-gap: 10px;
+    }
+
+    .experiment-item {
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .experiments-masonry {
+        column-count: 2;
+    }
+}
 
 /* -------------------------------------------------------
    EXPERIMENT MODAL — viewport-fit, no scroll needed
@@ -449,7 +497,8 @@ nav {
     display: flex;
     flex-direction: column;
     padding: 8px 32px 24px 32px;
-    overflow-y: auto; /* always enable scrolling if needed */
+    overflow-y: auto;
+    /* always enable scrolling if needed */
     transition: padding 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -511,7 +560,7 @@ nav {
     font-size: 32px;
     font-weight: 600;
     letter-spacing: -0.03em;
-    color: #111111;
+    color: #1F2124;
     margin-bottom: 16px;
 }
 
@@ -551,7 +600,7 @@ nav {
 }
 
 .about-links a {
-    color: #111111;
+    color: #1F2124;
     text-decoration: none;
     font-size: 15px;
     transition: color 0.15s ease;
@@ -721,7 +770,8 @@ nav {
 }
 
 .modal-overlay.expanded .modal-sticky-header {
-    padding: 24px 40px; /* Match main tagline padding */
+    padding: 24px 40px;
+    /* Match main tagline padding */
 }
 
 .modal-nav-header-container {
@@ -731,11 +781,13 @@ nav {
     display: flex;
     gap: 8px;
     align-items: stretch;
-    pointer-events: auto; /* permit clicks through the pointer-events: none header parent */
+    pointer-events: auto;
+    /* permit clicks through the pointer-events: none header parent */
     transition: max-width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @media (min-width: 769px) {
+
     .modal-overlay.expanded .modal-nav-header-container,
     .modal-overlay.rail-active .modal-nav-header-container {
         max-width: none !important;
@@ -746,12 +798,13 @@ nav {
 .modal-project-title {
     font-size: 14px;
     font-weight: 500;
-    color: #111111;
+    color: #1F2124;
     flex-grow: 1;
     transition: margin-left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @media (min-width: 1025px) {
+
     .modal-overlay.expanded .modal-project-title,
     .modal-overlay.rail-active .modal-project-title {
         margin-left: 228px !important;
@@ -802,7 +855,7 @@ nav {
 .modal-hero-title {
     font-size: 46px;
     font-weight: 700;
-    color: #111111;
+    color: #1F2124;
     letter-spacing: -0.03em;
     line-height: 1.1;
     max-width: 600px;
@@ -902,7 +955,7 @@ nav {
 .narrative-editorial-block h3 {
     font-size: 20px;
     font-weight: 600;
-    color: #111111;
+    color: #1F2124;
     letter-spacing: -0.01em;
 }
 
@@ -1030,7 +1083,7 @@ nav {
     position: absolute;
     top: -40px;
     right: 0;
-    background: rgba(255,255,255,0.15);
+    background: rgba(255, 255, 255, 0.15);
     border: none;
     color: #FFFFFF;
     font-size: 14px;
@@ -1042,7 +1095,7 @@ nav {
 }
 
 .experiment-modal-close:hover {
-    background: rgba(255,255,255,0.25);
+    background: rgba(255, 255, 255, 0.25);
 }
 
 /* --- Responsive Breakpoints --- */
@@ -1348,7 +1401,7 @@ nav {
     align-items: start;
 }
 
-.modal-sheet .case-study-container .media-row > * {
+.modal-sheet .case-study-container .media-row>* {
     width: 100%;
     height: auto;
     margin-bottom: 0 !important;
@@ -1370,77 +1423,77 @@ nav {
     .modal-sheet .case-study-container {
         padding: 0 16px 48px 16px !important;
     }
-    
+
     .modal-sheet .case-study-container h1 {
         font-size: 14px !important;
         margin-bottom: 24px !important;
         font-weight: 600 !important;
         text-transform: uppercase;
     }
-    
-    .modal-sheet .case-study-container .body-text, 
+
+    .modal-sheet .case-study-container .body-text,
     .modal-sheet .case-study-container .list-section li {
         font-size: 14px !important;
         line-height: 1.5 !important;
         color: #707070 !important;
         margin-bottom: 16px !important;
     }
-    
+
     .modal-sheet .case-study-container .meta-grid {
         grid-template-columns: 80px 1fr !important;
         gap: 10px 20px !important;
         margin: 40px 0 40px 0 !important;
     }
-    
+
     .modal-sheet .case-study-container .meta-label {
         font-size: 13px !important;
         color: #000 !important;
         font-weight: 600 !important;
         text-transform: uppercase;
     }
-    
+
     .modal-sheet .case-study-container .meta-value {
         font-size: 13px !important;
         color: #707070 !important;
     }
-    
+
     .modal-sheet .case-study-container img,
     .modal-sheet .case-study-container .full-img {
         margin-bottom: 8px !important;
     }
-    
-    .modal-sheet .case-study-container .img-grid, 
+
+    .modal-sheet .case-study-container .img-grid,
     .modal-sheet .case-study-container .gallery-grid {
         display: flex !important;
         flex-direction: column !important;
         gap: 8px !important;
         margin: 0 0 8px 0 !important;
     }
-    
+
     .modal-sheet .case-study-container .media-row {
         display: flex !important;
         flex-direction: column !important;
         gap: 8px !important;
     }
-    
+
     .modal-sheet .case-study-container hr {
         margin: 30px 0 !important;
     }
-    
+
     .modal-sheet .case-study-container h2 {
         margin: 30px 0 16px !important;
     }
-    
+
     .modal-sheet .case-study-container .two-col-text {
         grid-template-columns: 1fr !important;
         gap: 20px !important;
     }
-    
+
     .modal-sheet .case-study-container .quote-box {
         font-size: 18px !important;
         margin: 40px 0 !important;
     }
-    
+
     .modal-sheet .case-study-container .tagline {
         font-size: 14px !important;
     }
