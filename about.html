@@ -84,6 +84,18 @@
             </div>
         </div>
     </main>
-
+    <script>
+        function initTaglineMarquee() {
+            const el = document.querySelector('.tagline-block');
+            if (!el) return;
+            const overflow = el.scrollWidth - el.clientWidth;
+            if (overflow > 2) {
+                el.style.setProperty('--marquee-dist', `-${overflow}px`);
+                el.classList.add('overflow-active');
+            }
+        }
+        window.addEventListener('load', initTaglineMarquee);
+        window.addEventListener('resize', initTaglineMarquee);
+    </script>
 </body>
 </html>

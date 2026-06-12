@@ -211,16 +211,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     const board = document.createElement('div');
                     board.className = 'metadata-showcase-board';
 
-                    function makeStack(tagText, bodyContent, isActionable, href) {
+                    function makeStack(tagText, bodyContent) {
                         const stack = document.createElement('div');
                         stack.className = 'meta-stack-block';
-                        const tag = document.createElement(isActionable ? 'a' : 'span');
-                        tag.className = 'meta-panel-tag' + (isActionable ? ' actionable-variant' : '');
+                        
+                        const tag = document.createElement('div');
+                        tag.className = 'meta-panel-tag-new';
                         tag.textContent = tagText;
-                        if (isActionable && href) { tag.href = href; tag.target = '_blank'; }
                         stack.appendChild(tag);
+                        
                         const body = document.createElement('div');
-                        body.className = 'meta-panel-body-card';
+                        body.className = 'meta-panel-body-new';
                         if (typeof bodyContent === 'string') {
                             body.textContent = bodyContent;
                         } else {
@@ -235,27 +236,29 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (!overviewText) {
                         overviewText = tempDiv.querySelector('.body-text')?.textContent.trim() || 'No overview available.';
                     }
-                    board.appendChild(makeStack('About', overviewText, false, null));
+                    board.appendChild(makeStack('About', overviewText));
 
                     const otherKeys = Object.keys(metaPairs);
                     let col2Key = otherKeys.find(k => ['media','client','tags'].includes(k.toLowerCase()));
                     if (!col2Key && otherKeys.length > 0) col2Key = otherKeys[0];
 
                     if (col2Key) {
+                        const stack = document.createElement('div');
+                        stack.className = 'meta-stack-block';
+                        
+                        const tag = document.createElement('div');
+                        tag.className = 'meta-panel-tag-new';
+                        tag.textContent = col2Key;
+                        stack.appendChild(tag);
+
                         const listEl = document.createElement('div');
-                        listEl.className = 'meta-panel-body-card list-layout';
+                        listEl.className = 'meta-panel-body-new list-layout';
                         metaPairs[col2Key].split(',').map(s => s.trim()).filter(Boolean).forEach(v => {
                             const row = document.createElement('div');
                             row.className = 'meta-list-row';
                             row.textContent = v;
                             listEl.appendChild(row);
                         });
-                        const stack = document.createElement('div');
-                        stack.className = 'meta-stack-block';
-                        const tag = document.createElement('span');
-                        tag.className = 'meta-panel-tag';
-                        tag.textContent = col2Key;
-                        stack.appendChild(tag);
                         stack.appendChild(listEl);
                         board.appendChild(stack);
                     }
@@ -264,12 +267,22 @@ document.addEventListener('DOMContentLoaded', () => {
                     const col3Key = otherKeys.find(k => k !== col2Key && k.toLowerCase() === 'year') ||
                                     otherKeys.find(k => k !== col2Key);
                     if (col3Key) {
-                        board.appendChild(makeStack(col3Key, metaPairs[col3Key], false, null));
+                        board.appendChild(makeStack(col3Key, metaPairs[col3Key]));
                     } else if (metaPairs['Year']) {
-                        board.appendChild(makeStack('Year', metaPairs['Year'], false, null));
+                        board.appendChild(makeStack('Year', metaPairs['Year']));
                     }
 
                     metaGrid.parentNode.replaceChild(board, metaGrid);
+
+                    const linkUrl = project.externalLink || (project.link ? `projects/${project.id}/index.html` : null);
+                    if (linkUrl) {
+                        const mobileLiveBtn = document.createElement('a');
+                        mobileLiveBtn.className = 'mobile-live-website-btn nav-btn active';
+                        mobileLiveBtn.href = linkUrl;
+                        mobileLiveBtn.target = '_blank';
+                        mobileLiveBtn.textContent = 'Live Website ↗';
+                        board.parentNode.insertBefore(mobileLiveBtn, board.nextSibling);
+                    }
                 }
 
                 bodyTarget.innerHTML = tempDiv.innerHTML;

@@ -85,7 +85,7 @@ const projectsData = [
         "year": "2021",
         "galleryLayout": "1",
         "galleryImages": [
-            { "src": "projects/oneplus/oneplus.png", "ratio": "ratio-landscape" }
+            { "src": "covers/oneplus.png", "ratio": "ratio-landscape" }
         ],
         "link": "projects/oneplus/index.html",
         "externalLink": "",
@@ -109,7 +109,7 @@ const projectsData = [
         "year": "",
         "galleryLayout": "1",
         "galleryImages": [
-            { "src": "projects/bezapp/bezapp.png", "ratio": "ratio-landscape" }
+            { "src": "covers/bezapp.png", "ratio": "ratio-landscape" }
         ],
         "link": "https://www.behance.net/gallery/116765115/Events-Management-App-UIUX-Design",
         "externalLink": "https://www.behance.net/gallery/116765115/Events-Management-App-UIUX-Design",
@@ -121,7 +121,7 @@ const projectsData = [
         "year": "2025",
         "galleryLayout": "1",
         "galleryImages": [
-            { "src": "projects/doodleforest/doodleforest.png", "ratio": "ratio-landscape" }
+            { "src": "covers/doodleforest.png", "ratio": "ratio-landscape" }
         ],
         "link": "projects/doodleforest/index.html",
         "externalLink": "",
@@ -133,7 +133,7 @@ const projectsData = [
         "year": "",
         "galleryLayout": "1",
         "galleryImages": [
-            { "src": "projects/gudz/gudz.png", "ratio": "ratio-landscape" }
+            { "src": "covers/gudz.png", "ratio": "ratio-landscape" }
         ],
         "link": "https://www.behance.net/gallery/186363817/Logistics-CMS-Delivery-App",
         "externalLink": "https://www.behance.net/gallery/186363817/Logistics-CMS-Delivery-App",

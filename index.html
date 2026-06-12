@@ -57,7 +57,8 @@
                     <div class="modal-nav-header-container">
                         <div class="header-block modal-project-title" id="modal-title-target">Project Architectural Overview</div>
                         <a class="nav-btn active" id="modal-action-btn" target="_blank">Live Website ↗</a>
-                        <button class="nav-btn" onclick="closeCaseStudy(event)">Close View</button>
+                        <button class="nav-btn" id="modal-close-btn-desktop" onclick="closeCaseStudy(event)">Close View</button>
+                        <button class="nav-btn active" id="modal-close-btn-mobile" onclick="closeCaseStudy(event)">Close</button>
                     </div>
                 </div>
 
@@ -72,5 +73,19 @@
 
     <script src="projects.js"></script>
     <script src="app.js"></script>
+    <script>
+        // Tagline marquee: activate if text overflows the container
+        function initTaglineMarquee() {
+            const el = document.querySelector('.tagline-block');
+            if (!el) return;
+            const overflow = el.scrollWidth - el.clientWidth;
+            if (overflow > 2) {
+                el.style.setProperty('--marquee-dist', `-${overflow}px`);
+                el.classList.add('overflow-active');
+            }
+        }
+        window.addEventListener('load', initTaglineMarquee);
+        window.addEventListener('resize', initTaglineMarquee);
+    </script>
 </body>
 </html>

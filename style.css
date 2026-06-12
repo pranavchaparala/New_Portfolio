@@ -33,7 +33,7 @@ header {
     gap: 8px;
     padding: 24px 40px;
     background-color: transparent;
-    z-index: 1000;
+    z-index: 200000;
     width: 100%;
     pointer-events: none;
 }
@@ -76,6 +76,65 @@ nav {
     display: flex;
     gap: 8px;
     pointer-events: auto;
+}
+
+@keyframes tagline-marquee {
+    0%   { transform: translateX(0); }
+    40%  { transform: translateX(0); }
+    60%  { transform: translateX(var(--marquee-dist, 0px)); }
+    90%  { transform: translateX(var(--marquee-dist, 0px)); }
+    100% { transform: translateX(0); }
+}
+
+/* --- Desktop + Tablet: modal seamless transition --- */
+@media (min-width: 769px) {
+    .tagline-block {
+        overflow: hidden;
+        white-space: nowrap;
+        position: relative;
+        transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .tagline-block.overflow-active .tagline-text {
+        display: inline-block;
+        animation: tagline-marquee 8s ease-in-out infinite;
+    }
+
+    nav {
+        transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    body:has(.modal-overlay.expanded) header .tagline-block,
+    body:has(.modal-overlay.expanded) header nav,
+    body:has(.modal-overlay.rail-active) header .tagline-block,
+    body:has(.modal-overlay.rail-active) header nav {
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-4px);
+    }
+}
+
+/* --- Desktop-only navbar structural layout --- */
+@media (min-width: 1025px) {
+    .header-block {
+        height: 34px;
+    }
+
+    .nav-btn {
+        height: 34px;
+    }
+
+    .logo-block {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 220px;
+        flex-shrink: 0;
+    }
+
+    nav {
+        margin-left: auto;
+    }
 }
 
 .nav-btn {
@@ -219,24 +278,25 @@ nav {
     .project-card-container.layout-3 .media-frame {
         flex: 1;
     }
-    /* Single-image cards in the 3-col grid use aspect-ratio, not fixed height */
-    .project-single-grid .project-gallery {
-        height: auto;
-        display: block;
-    }
-    .project-single-grid .media-frame {
-        height: auto;
-        width: 100%;
-    }
-    .project-single-grid .media-frame img,
-    .project-single-grid .media-frame video {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+}
+
+/* Single-image cards in the 3-col grid use aspect-ratio, not fixed height */
+.project-single-grid .project-gallery {
+    height: auto;
+    display: block;
+}
+.project-single-grid .media-frame {
+    width: 100%;
+    position: relative;
+}
+.project-single-grid .media-frame img,
+.project-single-grid .media-frame video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .gallery-grid-3 {
@@ -333,6 +393,14 @@ nav {
     width: 100%;
 }
 
+.experiment-item .project-header {
+    margin-bottom: 4px;
+}
+
+.experiment-item .project-year {
+    opacity: 0.8;
+}
+
 /* Media wrapper inside the card: natural aspect ratio, no cropping */
 .experiment-media-wrap {
     width: 100%;
@@ -362,7 +430,7 @@ nav {
 @media (max-width: 1400px) { .experiments-masonry { column-count: 4; } }
 @media (max-width: 1100px) { .experiments-masonry { column-count: 3; } }
 @media (max-width: 768px)  { .experiments-masonry { column-count: 2; column-gap: 10px; } .experiment-item { margin-bottom: 10px; } }
-@media (max-width: 480px)  { .experiments-masonry { column-count: 1; } }
+@media (max-width: 480px)  { .experiments-masonry { column-count: 2; } }
 
 /* -------------------------------------------------------
    EXPERIMENT MODAL — viewport-fit, no scroll needed
@@ -383,10 +451,6 @@ nav {
     padding: 8px 32px 24px 32px;
     overflow-y: auto; /* always enable scrolling if needed */
     transition: padding 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.modal-overlay.rail-active .exp-modal-body {
-    padding: 8px 110px 24px 64px;
 }
 
 .exp-modal-content {
@@ -614,8 +678,8 @@ nav {
     background-color: #FFFFFF;
     width: 70%;
     max-width: 1100px;
-    height: calc(100vh - 80px);
-    margin-top: 40px;
+    height: calc(100vh - 130px);
+    margin-top: 90px;
     border-radius: 12px;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
     overflow-y: scroll;
@@ -668,13 +732,30 @@ nav {
     gap: 8px;
     align-items: stretch;
     pointer-events: auto; /* permit clicks through the pointer-events: none header parent */
+    transition: max-width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (min-width: 769px) {
+    .modal-overlay.expanded .modal-nav-header-container,
+    .modal-overlay.rail-active .modal-nav-header-container {
+        max-width: none !important;
+        width: 100% !important;
+    }
 }
 
 .modal-project-title {
     font-size: 14px;
-    font-weight: 500; /* Match tagline logo-block */
+    font-weight: 500;
     color: #111111;
     flex-grow: 1;
+    transition: margin-left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (min-width: 1025px) {
+    .modal-overlay.expanded .modal-project-title,
+    .modal-overlay.rail-active .modal-project-title {
+        margin-left: 228px !important;
+    }
 }
 
 /* --- Content Layout Scroller Frame --- */
@@ -767,55 +848,46 @@ nav {
 .meta-stack-block {
     display: flex;
     flex-direction: column;
-}
-
-.meta-panel-tag {
     background-color: #EFEFEF;
     border-radius: 6px;
-    padding: 14px 18px;
-    font-size: 15px;
+    padding: 8px;
+    gap: 4px;
+}
+
+.meta-panel-tag-new {
+    font-size: 11px;
+    font-weight: 500;
     color: #8C939D;
-    font-weight: 500;
-    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
     display: block;
-    text-decoration: none;
 }
 
-.meta-panel-tag.actionable-variant {
-    background-color: #323338;
-    color: #FFFFFF;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-decoration: none;
-    font-weight: 500;
-    transition: background-color 0.15s ease;
-}
-
-.meta-panel-tag.actionable-variant:hover {
-    background-color: #1E1F22;
-}
-
-.meta-panel-body-card {
-    background-color: #EFEFEF;
-    border-radius: 6px;
-    padding: 24px;
-    font-size: 15px;
+.meta-panel-body-new {
+    font-size: 14px;
     color: #1A1D20;
-    line-height: 1.6;
+    line-height: 1.4;
     flex-grow: 1;
 }
 
-.meta-panel-body-card.list-layout {
+.meta-panel-body-new.list-layout {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 2px;
 }
 
 .meta-list-row {
     color: #1A1D20;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 400;
+}
+
+.mobile-live-website-btn {
+    display: none;
+}
+
+#modal-close-btn-mobile {
+    display: none;
 }
 
 /* --- Narrative Content Modules --- */
@@ -984,18 +1056,52 @@ nav {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     body {
         padding: 110px 16px 16px 16px;
     }
 
     header {
         padding: 16px;
-        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+
+    .logo-block {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
     .tagline-block {
         display: none;
+    }
+
+    nav {
+        width: 100%;
+        display: flex;
+        gap: 8px;
+    }
+
+    nav .nav-btn {
+        flex: 1;
+        justify-content: center;
+    }
+
+    /* Only show first picture of cover on mobile */
+    .project-gallery .media-frame:not(:first-child) {
+        display: none !important;
+    }
+
+    .project-single-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .modal-overlay.expanded .modal-project-title,
+    .modal-overlay.rail-active .modal-project-title {
+        margin-left: 0 !important;
     }
 
     .project-row-split {
@@ -1021,7 +1127,7 @@ nav {
 
     .modal-sticky-header {
         padding: 12px;
-        top: 0;
+        top: 110px;
     }
 
     .modal-nav-header-container {
@@ -1030,6 +1136,34 @@ nav {
 
     .modal-body-scroller-content {
         padding: 16px 12px;
+    }
+
+    /* Prevent padding increase on mobile project detail page when scrolled */
+    .modal-overlay.expanded .modal-body-scroller-content {
+        padding: 16px 12px !important;
+    }
+
+    .modal-overlay.expanded .modal-sticky-header {
+        padding: 12px !important;
+    }
+
+    /* Modal button changes for mobile */
+    #modal-action-btn,
+    #modal-close-btn-desktop {
+        display: none !important;
+    }
+
+    #modal-close-btn-mobile {
+        display: flex !important;
+    }
+
+    .mobile-live-website-btn {
+        display: flex !important;
+        width: 100%;
+        justify-content: center;
+        margin-top: -16px;
+        margin-bottom: 24px;
+        text-align: center;
     }
 
     .metadata-showcase-board {

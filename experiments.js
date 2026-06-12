@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const descSpan = document.createElement('span');
             descSpan.className = 'project-year';
-            descSpan.textContent = exp.description;
+            descSpan.textContent = exp.tag || '';
 
             header.appendChild(nameSpan);
             header.appendChild(descSpan);
@@ -183,14 +183,17 @@ document.addEventListener('DOMContentLoaded', () => {
         function makeStack(tagText, bodyContent) {
             const stack = document.createElement('div');
             stack.className = 'meta-stack-block';
-            const tag = document.createElement('span');
-            tag.className = 'meta-panel-tag';
+            
+            const tag = document.createElement('div');
+            tag.className = 'meta-panel-tag-new';
             tag.textContent = tagText;
             stack.appendChild(tag);
+            
             const body = document.createElement('div');
-            body.className = 'meta-panel-body-card';
+            body.className = 'meta-panel-body-new';
             body.textContent = bodyContent;
             stack.appendChild(body);
+            
             return stack;
         }
 
