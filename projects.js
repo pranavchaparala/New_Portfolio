@@ -33,9 +33,9 @@ const projectsData = [
         "year": "2024",
         "galleryLayout": "3",
         "galleryImages": [
-            { "src": "covers/lectrix1.png", "ratio": "ratio-cube" },
-            { "src": "covers/lectrix2.png", "ratio": "ratio-cube" },
-            { "src": "covers/lectrix3.png", "ratio": "ratio-cube" }
+            { "src": "/covers/lectrix1.png", "ratio": "ratio-cube" },
+            { "src": "/covers/lectrix2.png", "ratio": "ratio-cube" },
+            { "src": "/covers/lectrix3.png", "ratio": "ratio-cube" }
         ],
         "link": "projects/lectrix-ev/index.html",
         "externalLink": "",
