@@ -7,11 +7,11 @@ const projectsData = [
         "galleryLayout": "3",
         "galleryImages": [
             { "src": "covers/clanx.png", "ratio": "ratio-cube" },
-            { "src": "projects/clanx/assets/10.png", "ratio": "ratio-cube" },
-            { "src": "projects/clanx/assets/12.png", "ratio": "ratio-cube" }
+            { "src": "covers/clanx2.png", "ratio": "ratio-cube" },
+            { "src": "covers/clanx3.png", "ratio": "ratio-cube" }
         ],
         "link": "projects/clanx/index.html",
-        "externalLink": "",
+        "externalLink": "https://clanx.ai/",
         "tags": ["Product Design"]
     },
     {
@@ -24,7 +24,7 @@ const projectsData = [
             { "src": "projects/permanence-of-decay/assets/IMG_0652-edited-scaled.jpg", "ratio": "ratio-cube" }
         ],
         "link": "projects/permanence-of-decay/index.html",
-        "externalLink": "",
+        "externalLink": "https://parsons.edu/dt-2026/permanence-of-decay/",
         "tags": ["Creative Tech"]
     },
     {
@@ -38,7 +38,7 @@ const projectsData = [
             { "src": "covers/lectrix3.png", "ratio": "ratio-cube" }
         ],
         "link": "projects/lectrix-ev/index.html",
-        "externalLink": "",
+        "externalLink": "https://apps.apple.com/in/app/lectrix/id1637083917",
         "tags": ["Product Design"]
     },
     {
@@ -51,7 +51,7 @@ const projectsData = [
             { "src": "projects/lunaring/assets/10.png", "ratio": "ratio-cube" }
         ],
         "link": "projects/lunaring/index.html",
-        "externalLink": "",
+        "externalLink": "https://www.lunazone.com/products/luna-smart-ring-gen-2",
         "tags": ["Product Design"]
     },
     {
@@ -76,7 +76,7 @@ const projectsData = [
             { "src": "projects/unreasonablecube/unreasonablecube_Claude.png", "ratio": "ratio-cube" }
         ],
         "link": "projects/unreasonablecube/index.html",
-        "externalLink": "",
+        "externalLink": "https://devpost.com/software/team-18-unreasonable-cube/joins/i0cOIBWhoy-2Ny883ERCuA",
         "tags": ["Creative Tech"]
     },
     {
@@ -88,7 +88,7 @@ const projectsData = [
             { "src": "covers/oneplus.png", "ratio": "ratio-cube" }
         ],
         "link": "projects/oneplus/index.html",
-        "externalLink": "",
+        "externalLink": "https://www.oneplus.com/us/oxygenos12",
         "tags": ["Product Design"]
     },
     {
@@ -97,10 +97,10 @@ const projectsData = [
         "year": "2025",
         "galleryLayout": "1",
         "galleryImages": [
-            { "src": "covers/viewbuds.png", "ratio": "ratio-landscape" }
+            { "src": "covers/viewbuds.png", "ratio": "ratio-cube" }
         ],
         "link": "projects/viewbuds/index.html",
-        "externalLink": "",
+        "externalLink": "https://www.gonoise.com/products/noise-view-buds-truly-wireless-earbuds",
         "tags": ["Product Design"]
     },
     {
