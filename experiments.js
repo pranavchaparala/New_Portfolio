@@ -11,25 +11,25 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- DOM ---
-    const experimentsSection = document.getElementById('experiments-section');
-    const experimentsCountEl = document.getElementById('experiments-count');
+    const experimentsSection    = document.getElementById('experiments-section');
+    const experimentsCountEl    = document.getElementById('experiments-count');
     const experimentsCountTitle = document.getElementById('experiments-count-title');
 
     // Modal DOM
-    const overlayEl = document.getElementById('experiment-modal');
-    const sheetEl = document.getElementById('experiment-modal-sheet');
-    const mediaContainer = document.getElementById('experiment-media-container');
-    const metaRow = document.getElementById('exp-modal-meta');
-    const titleTarget = document.getElementById('experiment-modal-title');
-    const dynamicBody = document.getElementById('exp-modal-dynamic-body');
+    const overlayEl       = document.getElementById('experiment-modal');
+    const sheetEl         = document.getElementById('experiment-modal-sheet');
+    const mediaContainer  = document.getElementById('experiment-media-container');
+    const metaRow         = document.getElementById('exp-modal-meta');
+    const titleTarget     = document.getElementById('experiment-modal-title');
+    const dynamicBody     = document.getElementById('exp-modal-dynamic-body');
 
     // Minimap rail DOM
-    const railEl = document.getElementById('exp-modal-rail');
-    const viewportWin = document.getElementById('exp-modal-viewport-indicator');
-    const miniMapEl = document.getElementById('exp-modal-mini-map');
+    const railEl          = document.getElementById('exp-modal-rail');
+    const viewportWin     = document.getElementById('exp-modal-viewport-indicator');
+    const miniMapEl       = document.getElementById('exp-modal-mini-map');
 
     const count = typeof experimentsData !== 'undefined' ? experimentsData.length : 0;
-    if (experimentsCountEl) experimentsCountEl.textContent = count;
+    if (experimentsCountEl)    experimentsCountEl.textContent    = count;
     if (experimentsCountTitle) experimentsCountTitle.textContent = count;
 
     const MEDIA_BASE = 'assets/experiments/';
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const mediaWrap = document.createElement('div');
             mediaWrap.className = 'experiment-media-wrap';
 
-            const isGif = exp.videoFilename && exp.videoFilename.endsWith('.gif');
+            const isGif   = exp.videoFilename && exp.videoFilename.endsWith('.gif');
             const isVideo = exp.videoFilename && (
                 exp.videoFilename.endsWith('.mp4') ||
                 exp.videoFilename.endsWith('.mov') ||
@@ -83,11 +83,11 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (isVideo) {
                 const video = document.createElement('video');
                 video.src = MEDIA_BASE + exp.videoFilename;
-                video.autoplay = true;
-                video.loop = true;
-                video.muted = true;
+                video.autoplay    = true;
+                video.loop        = true;
+                video.muted       = true;
                 video.playsInline = true;
-                video.className = 'experiment-media';
+                video.className   = 'experiment-media';
                 mediaWrap.appendChild(video);
             } else {
                 const img = document.createElement('img');
@@ -112,16 +112,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // -------------------------------------------------------
     function syncRailLayout() {
         if (!dynamicBody || !railEl || !miniMapEl || !viewportWin || !sheetEl) return;
-        const totalH = dynamicBody.scrollHeight;
+        const totalH   = dynamicBody.scrollHeight;
         const visibleH = sheetEl.clientHeight;
-        const railH = railEl.clientHeight;
-        const ratio = railH / totalH;
-        const indH = Math.max(20, Math.round(visibleH * ratio));
+        const railH    = railEl.clientHeight;
+        const ratio    = railH / totalH;
+        const indH     = Math.max(20, Math.round(visibleH * ratio));
         viewportWin.style.height = `${indH}px`;
 
         miniMapEl.innerHTML = '';
         dynamicBody.querySelectorAll('h1, h2, h3, img, video').forEach(el => {
-            const top = Math.round(el.offsetTop * ratio);
+            const top    = Math.round(el.offsetTop  * ratio);
             const height = Math.max(2, Math.round(el.offsetHeight * ratio));
             const m = document.createElement('div');
             m.className = 'mini-map-element' + (el.tagName === 'IMG' || el.tagName === 'VIDEO' ? ' mini-map-media' : '');
@@ -139,20 +139,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // -------------------------------------------------------
     // OPEN EXPERIMENT MODAL
     // -------------------------------------------------------
-    window.openExperimentModal = function (exp) {
+    window.openExperimentModal = function(exp) {
         if (!overlayEl || !mediaContainer || !metaRow || !titleTarget) return;
-
-        // Set ARIA attributes
-        overlayEl.setAttribute('role', 'dialog');
-        overlayEl.setAttribute('aria-modal', 'true');
-        overlayEl.setAttribute('aria-labelledby', 'experiment-modal-title');
 
         // Set header title
         titleTarget.innerText = exp.title;
 
         // Inject media
         mediaContainer.innerHTML = '';
-        const isGif = exp.videoFilename && exp.videoFilename.endsWith('.gif');
+        const isGif   = exp.videoFilename && exp.videoFilename.endsWith('.gif');
         const isVideo = exp.videoFilename && (
             exp.videoFilename.endsWith('.mp4') ||
             exp.videoFilename.endsWith('.mov') ||
@@ -166,12 +161,12 @@ document.addEventListener('DOMContentLoaded', () => {
             mediaContainer.appendChild(img);
         } else if (isVideo) {
             const video = document.createElement('video');
-            video.src = MEDIA_BASE + exp.videoFilename;
-            video.autoplay = true;
-            video.loop = true;
-            video.muted = true;
+            video.src         = MEDIA_BASE + exp.videoFilename;
+            video.autoplay    = true;
+            video.loop        = true;
+            video.muted       = true;
             video.playsInline = true;
-            video.controls = true;
+            video.controls    = true;
             mediaContainer.appendChild(video);
         } else {
             const img = document.createElement('img');
@@ -188,17 +183,17 @@ document.addEventListener('DOMContentLoaded', () => {
         function makeStack(tagText, bodyContent) {
             const stack = document.createElement('div');
             stack.className = 'meta-stack-block';
-
+            
             const tag = document.createElement('div');
             tag.className = 'meta-panel-tag-new';
             tag.textContent = tagText;
             stack.appendChild(tag);
-
+            
             const body = document.createElement('div');
             body.className = 'meta-panel-body-new';
             body.textContent = bodyContent;
             stack.appendChild(body);
-
+            
             return stack;
         }
 
@@ -207,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Col 2 — Medium (inferred from file type)
         let medium = 'Static Image';
-        if (isGif) medium = 'GIF Animation';
+        if (isGif)   medium = 'GIF Animation';
         if (isVideo) medium = 'Motion / Video';
         board.appendChild(makeStack('Medium', medium));
 
@@ -225,7 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => syncRailLayout(), 80);
     };
 
-    window.closeExperimentModal = function (event) {
+    window.closeExperimentModal = function(event) {
         if (event) event.stopPropagation();
         if (!overlayEl) return;
         overlayEl.classList.remove('active');
@@ -246,18 +241,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Escape key closes modal
-    document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && overlayEl && overlayEl.classList.contains('active')) {
-            closeExperimentModal(e);
-        }
-    });
-
     // Scroll: toggle rail-active when scrolled, and track scroll position
     let lastScrollTop = 0;
     if (sheetEl) {
         sheetEl.addEventListener('scroll', () => {
-            const pos = sheetEl.scrollTop;
+            const pos    = sheetEl.scrollTop;
             const bottom = sheetEl.scrollHeight - sheetEl.clientHeight;
             if (pos > 40 && pos < bottom - 40) {
                 overlayEl.classList.add('rail-active');

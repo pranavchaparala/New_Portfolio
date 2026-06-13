@@ -28,9 +28,7 @@
 
     applyTheme(getPreferredTheme());
 
-    // Re-sync buttons once DOM is ready (initial sync runs before elements exist)
     document.addEventListener('DOMContentLoaded', () => {
-        syncToggleButtons(getPreferredTheme());
         document.querySelectorAll('.theme-btn').forEach((btn) => {
             btn.addEventListener('click', () => {
                 const theme = btn.getAttribute('data-theme');
