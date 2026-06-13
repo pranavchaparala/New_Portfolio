@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const bodyTarget = document.getElementById('modal-dynamic-body-target');
         if (!bodyTarget) return;
 
-        bodyTarget.innerHTML = '<div style="font-size:14px;color:#888;text-align:center;padding:120px 0;font-weight:400;font-family:inherit;">Loading case study...</div>';
+        bodyTarget.innerHTML = '<div style="font-size:14px;color:var(--text-muted);text-align:center;padding:120px 0;font-weight:400;font-family:inherit;">Loading case study...</div>';
 
         const projectUrl = `projects/${slug}/index.html`;
 
