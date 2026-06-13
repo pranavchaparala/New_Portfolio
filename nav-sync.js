@@ -19,45 +19,9 @@
             });
         }
     }
-
-    function updateClocks() {
-        const localTimeEl = document.getElementById('nyc-local-time');
-        const tzListEl = document.getElementById('other-timezones-list');
-        if (!localTimeEl && !tzListEl) return;
-
-        const now = new Date();
-        if (localTimeEl) {
-            localTimeEl.textContent = now.toLocaleTimeString('en-US', {
-                timeZone: 'America/New_York',
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit',
-                hour12: false
-            }) + ' EST';
-        }
-        if (tzListEl) {
-            const zones = [
-                { name: 'San Francisco', zone: 'America/Los_Angeles', label: 'PST' },
-                { name: 'London', zone: 'Europe/London', label: 'BST' },
-                { name: 'Tokyo', zone: 'Asia/Tokyo', label: 'JST' }
-            ];
-            tzListEl.innerHTML = zones.map(z => {
-                const zTime = now.toLocaleTimeString('en-US', {
-                    timeZone: z.zone,
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    hour12: false
-                });
-                return `<div class="timezone-row"><span>${z.name}</span><strong>${zTime} ${z.label}</strong></div>`;
-            }).join('');
-        }
-    }
-
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => { syncCounts(); updateClocks(); });
+        document.addEventListener('DOMContentLoaded', syncCounts);
     } else {
         syncCounts();
-        updateClocks();
     }
-    setInterval(updateClocks, 1000);
 })();
