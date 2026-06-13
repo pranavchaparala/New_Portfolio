@@ -136,6 +136,7 @@ nav {
 
 /* --- Desktop modal seamless transition --- */
 @media (min-width: 1025px) {
+
     body:has(.modal-overlay.expanded) header .tagline-block,
     body:has(.modal-overlay.expanded) header nav,
     body:has(.modal-overlay.rail-active) header .tagline-block,
@@ -1465,7 +1466,7 @@ nav {
 /* Responsive Overrides matching project.css max-width 1024px */
 @media (max-width: 1024px) {
     .modal-sheet .case-study-container {
-        padding: 180px 16px 48px 16px !important;
+        padding: 120px 16px 48px 16px !important;
     }
 
     .modal-sheet .case-study-container h1 {
