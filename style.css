@@ -20,8 +20,11 @@
     --bg-surface: #FFFFFF;
     --bg-surface-muted: var(--palette-100);
     --bg-elevated: rgba(232, 232, 237, 0.75);
-    --bg-card: #FFFFFF;
-    --bg-card-hover: var(--palette-100);
+
+    /* --- FLIPPED CARD COLORS (LIGHT THEME) --- */
+    --bg-card: var(--palette-100);
+    --bg-card-hover: #FFFFFF;
+
     --bg-media: var(--palette-200);
     --bg-media-hover: var(--palette-300);
     --bg-inverse: var(--palette-900);
@@ -82,8 +85,11 @@
     --bg-surface: var(--palette-900);
     --bg-surface-muted: var(--palette-800);
     --bg-elevated: rgba(44, 44, 46, 0.75);
-    --bg-card: var(--palette-900);
-    --bg-card-hover: var(--palette-800);
+
+    /* --- FLIPPED CARD COLORS (DARK THEME) --- */
+    --bg-card: var(--palette-800);
+    --bg-card-hover: var(--palette-900);
+
     --bg-media: var(--palette-700);
     --bg-media-hover: var(--palette-600);
     --bg-inverse: var(--palette-050);
@@ -166,6 +172,16 @@ body {
     letter-spacing: -0.01em;
     overflow-x: hidden;
     font-size: 14px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+body>main,
+body>h1,
+body>.projects-wrapper,
+body>.about-grid {
+    flex: 1;
 }
 
 /* --- STABLE FIXED NAVIGATION BAR --- */
@@ -300,15 +316,25 @@ nav {
     }
 
     .nav-btn {
-        height: 34px;
+        height: 34px !important;
+        padding: 6px 24px !important;
+        min-width: 160px !important;
+
+        /* --- NEW ALIGNMENT STYLES --- */
+        display: inline-flex !important;
+        /* Turns the button into a flex container */
+        justify-content: space-around;
+        /* Pushes content to the absolute left and right edges */
+        align-items: left;
+        /* Keeps text vertically centered */
     }
 
     .logo-block {
         display: flex;
         justify-content: space-between;
-        align-items: center;
-        width: 220px;
-        flex-shrink: 0;
+        align-items: left;
+        width: 180px;
+        flex-shrink: 1;
     }
 
     nav {
@@ -343,13 +369,21 @@ nav {
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid var(--border-subtle);
-    padding: 6px 14px;
+
+    /* 1. Make sure you have enough padding on the edges */
+    padding: 6px 12px !important;
+
     font-family: inherit;
     font-size: 14px;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 6px;
+
+    /* 2. Force full-width distribution */
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100%;
+    /* Allows it to fill the desktop min-width */
+
     color: var(--text-primary);
     border-radius: 6px;
     box-shadow: var(--shadow-sm);
@@ -366,11 +400,13 @@ nav {
 .nav-btn .count {
     background-color: var(--text-primary);
     color: var(--text-on-inverse);
-    padding: 2px 6px;
-    font-size: 14px;
+    padding: 2px 8px;
+    font-size: 12px;
     font-weight: 500;
     border-radius: 4px;
-    transition: background-color 0.15s ease, color 0.15s ease;
+    min-width: 20px;
+    text-align: center;
+    line-height: 1.3;
 }
 
 .nav-btn.active {
@@ -422,13 +458,15 @@ nav {
     flex-direction: column;
     gap: 6px;
     background-color: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    /* Added border variable */
     border-radius: 4px;
     padding: 8px;
     text-decoration: none;
     color: inherit;
     cursor: pointer;
     width: 100%;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 /* Inside single-grid, each card fills its grid cell */
@@ -567,7 +605,7 @@ nav {
 
 .project-card-container:hover .media-frame img,
 .project-card-container:hover .media-frame video {
-    transform: scale(0.98);
+    transform: scale(0.99);
     border-radius: 4px;
 }
 
@@ -1331,7 +1369,7 @@ nav {
 
     nav .nav-btn {
         flex: 1;
-        justify-content: center;
+        justify-content: space-around;
     }
 
     /* Only show first picture of cover on mobile */
@@ -1796,17 +1834,18 @@ header {
 }
 
 .home-bento-card {
-    background-color: var(--bg-panel);
+    background-color: var(--bg-card);
     border: 1px solid var(--border-subtle);
-    border-radius: 8px;
-    padding: 16px;
+    border-radius: 4px;
+    padding: 8px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     cursor: pointer;
     overflow: hidden;
     position: relative;
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: background-color 0.2s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    gap: 6px;
 }
 
 .bento-span-2 {
@@ -1828,8 +1867,9 @@ header {
     justify-content: space-between;
     width: 100%;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 400;
     z-index: 2;
+    padding: 2px;
 }
 
 .bento-year {
@@ -1838,13 +1878,14 @@ header {
 }
 
 .bento-media-frame {
-    position: absolute;
-    top: 48px;
-    left: 16px;
-    right: 16px;
-    bottom: 16px;
-    border-radius: 6px;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    flex: 1;
+    border-radius: 4px;
     overflow: hidden;
+    background-color: var(--bg-media);
 }
 
 .bento-media-frame img {
@@ -1929,9 +1970,9 @@ header {
 
 .footer-popup {
     position: absolute;
-    bottom: calc(100% + 8px);
-    left: 50%;
-    transform: translateX(-50%) translateY(4px);
+    bottom: calc(100% + 4px);
+    left: 0;
+    transform: translateY(4px);
     background: var(--popup-bg);
     border: 1px solid var(--popup-border);
     border-radius: 6px;
@@ -1945,7 +1986,7 @@ header {
 .footer-item:hover .footer-popup {
     opacity: 1;
     pointer-events: auto;
-    transform: translateX(-50%) translateY(0);
+    transform: translateY(0);
 }
 
 /* Map Popup */
@@ -2139,16 +2180,25 @@ header {
     display: grid;
     grid-template-columns: 2fr 1.2fr 1.2fr 1fr;
     gap: 16px;
-    padding: 16px 24px;
+    padding: 24px;
     background-color: var(--bg-panel);
     border: 1px solid var(--border-subtle);
     border-radius: 8px;
     margin-top: 60px;
-    margin-bottom: 24px;
+    margin-bottom: 0;
     font-size: 13px;
     color: var(--text-secondary);
     align-items: center;
     transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    flex-shrink: 0;
+}
+
+.site-footer.has-theme-toggle {
+    grid-template-columns: 2fr 1.2fr 1.2fr auto 1fr;
+}
+
+body:has(.site-footer) {
+    padding-bottom: 24px;
 }
 
 .site-footer-col {
@@ -2176,7 +2226,7 @@ header {
 .site-footer-col:hover .footer-popup {
     opacity: 1;
     pointer-events: auto;
-    transform: translateX(-50%) translateY(0);
+    transform: translateY(0);
 }
 
 .theme-toggle-col {
@@ -2226,9 +2276,6 @@ header {
     }
 }
 
-.site-footer.has-theme-toggle {
-    grid-template-columns: 2fr 1.2fr 1.2fr auto 1fr;
-}
 
 .theme-toggle-fixed {
     position: fixed;
