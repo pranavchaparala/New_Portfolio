@@ -1225,7 +1225,7 @@ nav {
 
     .modal-sticky-header {
         padding: 12px;
-        top: 110px;
+        top: 88px;
     }
 
     .modal-nav-header-container {
@@ -1466,7 +1466,7 @@ nav {
 /* Responsive Overrides matching project.css max-width 1024px */
 @media (max-width: 1024px) {
     .modal-sheet .case-study-container {
-        padding: 120px 16px 48px 16px !important;
+        padding: 84px 16px 48px 16px !important;
     }
 
     .modal-sheet .case-study-container h1 {
