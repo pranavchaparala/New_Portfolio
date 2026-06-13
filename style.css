@@ -132,9 +132,17 @@ nav {
         transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    body:has(.modal-overlay.expanded) header,
-    body:has(.modal-overlay.rail-active) header {
-        transform: translateY(-160px) !important;
+}
+
+/* --- Desktop modal seamless transition --- */
+@media (min-width: 1025px) {
+    body:has(.modal-overlay.expanded) header .tagline-block,
+    body:has(.modal-overlay.expanded) header nav,
+    body:has(.modal-overlay.rail-active) header .tagline-block,
+    body:has(.modal-overlay.rail-active) header nav {
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-4px);
     }
 }
 
@@ -1457,7 +1465,7 @@ nav {
 /* Responsive Overrides matching project.css max-width 1024px */
 @media (max-width: 1024px) {
     .modal-sheet .case-study-container {
-        padding: 0 16px 48px 16px !important;
+        padding: 180px 16px 48px 16px !important;
     }
 
     .modal-sheet .case-study-container h1 {
@@ -1605,11 +1613,11 @@ body.page-leaving .home-footer {
 
 /* --- Mobile Scroll Header Adjustments on Scroll --- */
 header {
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.65s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 .modal-sticky-header {
-    transition: top 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: top 0.65s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 @media (max-width: 1024px) {
