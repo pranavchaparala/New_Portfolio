@@ -26,9 +26,14 @@
         });
     }
 
-    applyTheme(getPreferredTheme());
+    // Set data-theme immediately to prevent flash
+    const initialTheme = getPreferredTheme();
+    root.setAttribute('data-theme', initialTheme);
 
+    // Everything else runs after DOM is ready
     document.addEventListener('DOMContentLoaded', () => {
+        syncToggleButtons(initialTheme);
+
         document.querySelectorAll('.theme-btn').forEach((btn) => {
             btn.addEventListener('click', () => {
                 const theme = btn.getAttribute('data-theme');
