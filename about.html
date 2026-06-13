@@ -35,55 +35,100 @@
     </header>
 
     <!-- Section Title -->
-    <h1 class="page-title">About <span>|</span> Profile <span>|</span> NYC</h1>
+    <h1 class="page-title">ABOUT <span>|</span> Profile <span>|</span> NYC</h1>
 
     <main class="projects-wrapper">
-        <div class="about-container">
-            <h1>Pranav Chaparala</h1>
-            <p class="about-body-text">
-                Product Designer based in NYC with experience in crafting impactful products.
-                Currently Pursuing an MFA in Design &amp; Technology at Parsons School of Design.
-            </p>
-
-            <hr class="about-divider">
-            <div class="about-two-col">
-                <div>
-                    <span style="font-size: 13px; font-weight: 500; text-transform: uppercase; color: #999999; display: block; margin-bottom: 8px;">Contact</span>
-                    <span class="about-body-text">
-                        <a href="mailto:pranavchaparala@gmail.com" style="color: inherit; text-decoration: none; border-bottom: 1px solid rgba(0,0,0,0.1);">pranavchaparala@gmail.com</a>
-                    </span>
-                </div>
-                <div class="about-links">
-                    <a href="https://drive.google.com/uc?export=download&id=1ry9SKoEx5cpskW3K9lFgc1BD4zF4ZJUA" target="_blank">Resume ↗</a>
-                    <a href="https://linkedin.com/in/pranavchaparala" target="_blank">LinkedIn ↗</a>
+        <div class="about-grid">
+            <!-- Left Col: Designer Bio -->
+            <div class="about-col-left">
+                <div class="meta-stack-block">
+                    <div class="meta-panel-tag-new">Designer</div>
+                    <div class="meta-panel-body-new">
+                        Product Designer based in NYC with experience in crafting impactful products. Currently Pursuing an MFA in Design &amp; Technology at Parsons School of Design.
+                    </div>
                 </div>
             </div>
 
-            <hr class="about-divider">
-            <h2>Education</h2>
-            <p class="about-body-text" style="margin-bottom: 8px;">Parsons School of Design, New York (2024 - 2026)</p>
-            <p class="about-body-text">National Institute of Fashion Technology, India (2019 - 2023)</p>
+            <!-- Right Col: Contacts & Sub-grid Lists -->
+            <div class="about-col-right">
+                <!-- Contacts -->
+                <div class="meta-stack-block" style="margin-bottom: 24px;">
+                    <div class="meta-panel-tag-new">Contacts</div>
+                    <div class="meta-panel-body-new list-layout">
+                        <a href="mailto:pranavchaparala@gmail.com" class="about-link-row">
+                            <span>Email</span>
+                            <span class="arrow">↗</span>
+                        </a>
+                        <a href="https://drive.google.com/uc?export=download&id=1ry9SKoEx5cpskW3K9lFgc1BD4zF4ZJUA" target="_blank" class="about-link-row">
+                            <span>Resume</span>
+                            <span class="arrow">↗</span>
+                        </a>
+                        <a href="https://linkedin.com/in/pranavchaparala" target="_blank" class="about-link-row">
+                            <span>LinkedIn</span>
+                            <span class="arrow">↗</span>
+                        </a>
+                    </div>
+                </div>
 
-            <hr class="about-divider">
-            <h2>Work</h2>
-            <div class="about-work-list">
-                <span>DigitalOcean</span>
-                <span>OnePlus</span>
-                <span>Noise</span>
-                <span>WTFRuchit Studios</span>
-                <span>SĀR Studio</span>
-            </div>
+                <!-- Sub-grid: Work & Education vs. Recognition -->
+                <div class="about-sub-grid">
+                    <!-- Left Sub-col: Work & Education -->
+                    <div class="about-sub-col">
+                        <div class="meta-stack-block">
+                            <div class="meta-panel-tag-new">Work</div>
+                            <div class="meta-panel-body-new list-layout">
+                                <div class="meta-list-row">DigitalOcean</div>
+                                <div class="meta-list-row">OnePlus</div>
+                                <div class="meta-list-row">Noise</div>
+                                <div class="meta-list-row">WTFRuchit Studios</div>
+                                <div class="meta-list-row">SĀR Studio</div>
+                            </div>
+                        </div>
 
-            <hr class="about-divider">
-            <h2>Recognition</h2>
-            <div class="about-recognition-grid">
-                <span>NIFT Best Academic Performance '23</span>
-                <span>Speaker at Salesforce Design Days 23</span>
-                <span>NIFT Meritorious Student '23</span>
-                <span>Spectrum '22 - Design Lead</span>
+                        <div class="meta-stack-block">
+                            <div class="meta-panel-tag-new">Education</div>
+                            <div class="meta-panel-body-new list-layout">
+                                <div class="meta-list-row">Parsons School of Design, New York (2024 - 2026)</div>
+                                <div class="meta-list-row">National Institute of Fashion Technology, India (2019 - 2023)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Sub-col: Recognition -->
+                    <div class="about-sub-col">
+                        <div class="meta-stack-block">
+                            <div class="meta-panel-tag-new">Recognition</div>
+                            <div class="meta-panel-body-new list-layout">
+                                <div class="meta-list-row">NIFT Best Academic Performance '23</div>
+                                <div class="meta-list-row">Speaker at Salesforce Design Days 23</div>
+                                <div class="meta-list-row">NIFT Meritorious Student '23</div>
+                                <div class="meta-list-row">Spectrum '22 - Design Lead</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
+        <!-- Four-column Footer -->
+        <footer class="site-footer">
+            <div class="site-footer-col">
+                <a href="mailto:pranavchaparala@gmail.com" data-haptic>pranavchaparala@gmail.com ↗</a>
+            </div>
+            <div class="site-footer-col">
+                <span>Last updated</span>
+                <strong>26.05.2026</strong>
+            </div>
+            <div class="site-footer-col theme-toggle-col">
+                <div class="theme-btn active">L</div>
+                <div class="theme-btn">D</div>
+            </div>
+            <div class="site-footer-col scroll-top-col">
+                <a href="#" onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;" data-haptic>Back to top ↗</a>
+            </div>
+        </footer>
     </main>
+
     <script src="haptics.js"></script>
     <script src="page-transition.js"></script>
     <script>

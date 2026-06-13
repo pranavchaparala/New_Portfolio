@@ -100,19 +100,26 @@
         </div>
     </div>
 
-    <footer class="home-footer">
-        <div class="footer-item" id="nyc-location-wrap">
-            Location — <span class="footer-trigger">New York</span>
+    <footer class="site-footer">
+        <div class="site-footer-col">
+            <a href="mailto:pranavchaparala@gmail.com" data-haptic>pranavchaparala@gmail.com ↗</a>
+        </div>
+        <div class="site-footer-col" id="nyc-location-wrap">
+            <span>Location</span>
+            <strong>New York</strong>
             <div class="footer-popup map-popup">
                 <img src="assets/map.png" alt="NYC Map">
             </div>
         </div>
-        <div class="footer-separator">•</div>
-        <div class="footer-item" id="nyc-time-wrap">
-            Local Time — <span class="footer-trigger" id="nyc-local-time">00:00:00 EST</span>
+        <div class="site-footer-col" id="nyc-time-wrap">
+            <span>Local Time</span>
+            <strong id="nyc-local-time">00:00:00 EST</strong>
             <div class="footer-popup time-popup" id="other-timezones-list">
                 <!-- Populated by home.js -->
             </div>
+        </div>
+        <div class="site-footer-col scroll-top-col">
+            <a href="#" onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;" data-haptic>Back to top ↗</a>
         </div>
     </footer>
 
