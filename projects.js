@@ -11,7 +11,7 @@ const projectsData = [
             { "src": "covers/clanx3.png", "ratio": "ratio-cube" }
         ],
         "link": "projects/clanx/index.html",
-        "externalLink": "https://clanx.ai/",
+        //"externalLink": "",
         "tags": ["Product Design"]
     },
     {
@@ -24,7 +24,7 @@ const projectsData = [
             { "src": "projects/permanence-of-decay/assets/IMG_0652-edited-scaled.jpg", "ratio": "ratio-cube" }
         ],
         "link": "projects/permanence-of-decay/index.html",
-        "externalLink": "https://parsons.edu/dt-2026/permanence-of-decay/",
+        // "externalLink": "",
         "tags": ["Creative Tech"]
     },
     {
@@ -38,7 +38,7 @@ const projectsData = [
             { "src": "covers/lectrix3.png", "ratio": "ratio-cube" }
         ],
         "link": "projects/lectrix-ev/index.html",
-        "externalLink": "https://apps.apple.com/in/app/lectrix/id1637083917",
+        //"externalLink": "",
         "tags": ["Product Design"]
     },
     {
@@ -51,7 +51,7 @@ const projectsData = [
             { "src": "projects/lunaring/assets/10.png", "ratio": "ratio-cube" }
         ],
         "link": "projects/lunaring/index.html",
-        "externalLink": "https://www.lunazone.com/products/luna-smart-ring-gen-2",
+        // "externalLink": "",
         "tags": ["Product Design"]
     },
     {
@@ -64,7 +64,7 @@ const projectsData = [
             { "src": "projects/echoes-of-presence/assets/5.jpeg", "ratio": "ratio-cube" }
         ],
         "link": "projects/echoes-of-presence/index.html",
-        "externalLink": "",
+        // "externalLink": "",
         "tags": ["Creative Tech"]
     },
     {
@@ -76,7 +76,7 @@ const projectsData = [
             { "src": "projects/unreasonablecube/unreasonablecube_Claude.png", "ratio": "ratio-cube" }
         ],
         "link": "projects/unreasonablecube/index.html",
-        "externalLink": "https://devpost.com/software/team-18-unreasonable-cube/joins/i0cOIBWhoy-2Ny883ERCuA",
+        //"externalLink": "",
         "tags": ["Creative Tech"]
     },
     {
@@ -88,7 +88,7 @@ const projectsData = [
             { "src": "covers/oneplus.png", "ratio": "ratio-cube" }
         ],
         "link": "projects/oneplus/index.html",
-        "externalLink": "https://www.oneplus.com/us/oxygenos12",
+        //"externalLink": "",
         "tags": ["Product Design"]
     },
     {
@@ -100,7 +100,7 @@ const projectsData = [
             { "src": "covers/viewbuds.png", "ratio": "ratio-cube" }
         ],
         "link": "projects/viewbuds/index.html",
-        "externalLink": "https://www.gonoise.com/products/noise-view-buds-truly-wireless-earbuds",
+        //"externalLink": "",
         "tags": ["Product Design"]
     },
     {
@@ -112,7 +112,7 @@ const projectsData = [
             { "src": "covers/bezapp.png", "ratio": "ratio-cube" }
         ],
         "link": "https://www.behance.net/gallery/116765115/Events-Management-App-UIUX-Design",
-        "externalLink": "https://www.behance.net/gallery/116765115/Events-Management-App-UIUX-Design",
+        //"externalLink": "",
         "tags": ["Product Design"]
     },
     {
@@ -124,7 +124,7 @@ const projectsData = [
             { "src": "covers/doodleforest.png", "ratio": "ratio-cube" }
         ],
         "link": "projects/doodleforest/index.html",
-        "externalLink": "",
+        //"externalLink": "",
         "tags": ["Creative Tech"]
     },
     {
@@ -136,7 +136,7 @@ const projectsData = [
             { "src": "covers/gudz.png", "ratio": "ratio-cube" }
         ],
         "link": "https://www.behance.net/gallery/186363817/Logistics-CMS-Delivery-App",
-        "externalLink": "https://www.behance.net/gallery/186363817/Logistics-CMS-Delivery-App",
+        //"externalLink": "",
         "tags": ["Product Design"]
     }
 ];
