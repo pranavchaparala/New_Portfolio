@@ -21,14 +21,14 @@
 
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="page-entering">
 
     <!-- STABLE FIXED NAVIGATION BAR -->
     <header>
         <a href="index.html" class="header-block logo-block">pranavchaparala<span>.com</span></a>
         <div class="header-block tagline-block">Designer and Creative Technologist working across different mediums and scales.</div>
-        <nav>
-            <a href="index.html" class="nav-btn">Projects <span class="count">11</span></a>
+        <nav id="main-nav">
+            <a href="projects.html" class="nav-btn">Projects <span class="count">11</span></a>
             <a href="experiments.html" class="nav-btn">Experiments <span class="count">19</span></a>
             <a href="about.html" class="nav-btn active">About</a>
         </nav>
@@ -84,6 +84,8 @@
             </div>
         </div>
     </main>
+    <script src="haptics.js"></script>
+    <script src="page-transition.js"></script>
     <script>
         function initTaglineMarquee() {
             const el = document.querySelector('.tagline-block');

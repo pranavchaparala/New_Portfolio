@@ -12,7 +12,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pranav Chaparala — Designer & Creative Technologist</title>
+    <title>Projects — Pranav Chaparala</title>
     <meta name="description"
         content="Portfolio of Pranav Chaparala, Product Designer and Creative Technologist based in NYC, showcasing product design case studies, generative coding experiments, and physical interface installations.">
     <link rel="icon" type="image/png" href="favicon.png">
@@ -29,26 +29,21 @@
         <a href="index.html" class="header-block logo-block">pranavchaparala<span>.com</span></a>
         <div class="header-block tagline-block">Designer and Creative Technologist working across different mediums and scales.</div>
         <nav id="main-nav">
-            <a href="projects.html" class="nav-btn">Projects <span class="count">11</span></a>
+            <a href="projects.html" class="nav-btn active">Projects <span class="count" id="projects-count">0</span></a>
             <a href="experiments.html" class="nav-btn">Experiments <span class="count">19</span></a>
             <a href="about.html" class="nav-btn">About</a>
         </nav>
     </header>
 
-    <h1 class="page-title">Selected Portfolio <span>|</span> Pranav Chaparala</h1>
+    <h1 class="page-title" id="page-title-text">Projects <span>|</span> <span id="projects-count-title">0</span>
+        <span>|</span> 2021 – 26
+    </h1>
 
     <main class="projects-wrapper">
-        <div class="home-bento-grid" id="home-bento-grid">
-            <!-- Populated by home.js -->
-        </div>
-
-        <h2 class="home-section-title">Selected Experiments</h2>
-        <div class="home-experiments-thumbs" id="home-experiments-thumbs">
-            <!-- Populated by home.js -->
+        <div id="projects-section">
         </div>
     </main>
 
-    <!-- Case Study Modal -->
     <div class="modal-overlay" id="case-study-modal">
         <div class="modal-sheet" id="modal-sheet-node">
             <div class="modal-right-progress-rail" id="modal-rail">
@@ -74,55 +69,12 @@
         </div>
     </div>
 
-    <!-- Experiment Modal -->
-    <div class="modal-overlay" id="experiment-modal">
-        <div class="modal-sheet exp-modal-sheet" id="experiment-modal-sheet">
-            <div class="modal-right-progress-rail" id="exp-modal-rail">
-                <div class="modal-right-viewport-window" id="exp-modal-viewport-indicator"></div>
-                <div class="modal-mini-map-blueprint" id="exp-modal-mini-map"></div>
-            </div>
-
-            <div class="modal-inner-content-frame">
-                <div class="modal-sticky-header">
-                    <div class="modal-nav-header-container">
-                        <div class="header-block modal-project-title" id="experiment-modal-title">Experiment Title</div>
-                        <button class="nav-btn" onclick="closeExperimentModal(event)">Close View</button>
-                    </div>
-                </div>
-
-                <div class="modal-body-scroller-content exp-modal-body" id="exp-modal-body">
-                    <div class="modal-content-container exp-modal-content" id="exp-modal-dynamic-body">
-                        <div class="exp-modal-media-wrap" id="experiment-media-container"></div>
-                        <div class="exp-modal-meta-row" id="exp-modal-meta"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <footer class="home-footer">
-        <div class="footer-item" id="nyc-location-wrap">
-            Location — <span class="footer-trigger">New York</span>
-            <div class="footer-popup map-popup">
-                <img src="assets/map.png" alt="NYC Map">
-            </div>
-        </div>
-        <div class="footer-separator">•</div>
-        <div class="footer-item" id="nyc-time-wrap">
-            Local Time — <span class="footer-trigger" id="nyc-local-time">00:00:00 EST</span>
-            <div class="footer-popup time-popup" id="other-timezones-list">
-                <!-- Populated by home.js -->
-            </div>
-        </div>
-    </footer>
-
     <script src="projects.js"></script>
     <script src="haptics.js"></script>
     <script src="page-transition.js"></script>
-    <script src="experiments.js"></script>
     <script src="app.js"></script>
-    <script src="home.js"></script>
     <script>
+        // Tagline marquee: activate if text overflows the container
         function initTaglineMarquee() {
             const el = document.querySelector('.tagline-block');
             if (!el) return;

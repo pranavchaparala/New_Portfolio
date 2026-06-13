@@ -9,20 +9,20 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- DOM Elements ---
-    const projectsSection      = document.getElementById('projects-section');
-    const projectsCountEl      = document.getElementById('projects-count');
-    const projectsCountTitle   = document.getElementById('projects-count-title');
+    const projectsSection = document.getElementById('projects-section');
+    const projectsCountEl = document.getElementById('projects-count');
+    const projectsCountTitle = document.getElementById('projects-count-title');
 
-    const overlayContainer     = document.getElementById('case-study-modal');
-    const modalSheet           = document.getElementById('modal-sheet-node');
-    const miniMapBlueprint     = document.getElementById('modal-mini-map-content');
-    const layoutRail           = document.getElementById('modal-rail');
-    const structuralTarget     = document.getElementById('modal-dynamic-body-target');
-    const viewportIndicator    = document.getElementById('modal-viewport-indicator');
+    const overlayContainer = document.getElementById('case-study-modal');
+    const modalSheet = document.getElementById('modal-sheet-node');
+    const miniMapBlueprint = document.getElementById('modal-mini-map-content');
+    const layoutRail = document.getElementById('modal-rail');
+    const structuralTarget = document.getElementById('modal-dynamic-body-target');
+    const viewportIndicator = document.getElementById('modal-viewport-indicator');
 
     // --- Update counts ---
     const projectCount = typeof projectsData !== 'undefined' ? projectsData.length : 0;
-    if (projectsCountEl)    projectsCountEl.textContent    = projectCount;
+    if (projectsCountEl) projectsCountEl.textContent = projectCount;
     if (projectsCountTitle) projectsCountTitle.textContent = projectCount;
 
     // -------------------------------------------------------
@@ -127,10 +127,10 @@ document.addEventListener('DOMContentLoaded', () => {
         miniMapBlueprint.innerHTML = '';
         const sections = structuralTarget.querySelectorAll('h1, h2, h3, img, video');
         sections.forEach(el => {
-            const offsetTop  = el.offsetTop;
-            const elHeight   = el.offsetHeight;
-            const top        = Math.round(offsetTop  * ratio);
-            const height     = Math.max(2, Math.round(elHeight * ratio));
+            const offsetTop = el.offsetTop;
+            const elHeight = el.offsetHeight;
+            const top = Math.round(offsetTop * ratio);
+            const height = Math.max(2, Math.round(elHeight * ratio));
             const marker = document.createElement('div');
             marker.className = 'mini-map-element';
             if (el.tagName === 'IMG' || el.tagName === 'VIDEO') {
@@ -143,22 +143,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function executeRailTracking(scrollPos) {
         if (!structuralTarget || !layoutRail || !viewportIndicator) return;
-        const totalHeight   = structuralTarget.scrollHeight;
-        const railHeight    = layoutRail.clientHeight;
-        const ratio         = railHeight / totalHeight;
-        const indicatorTop  = Math.round(scrollPos * ratio);
+        const totalHeight = structuralTarget.scrollHeight;
+        const railHeight = layoutRail.clientHeight;
+        const ratio = railHeight / totalHeight;
+        const indicatorTop = Math.round(scrollPos * ratio);
         viewportIndicator.style.transform = `translateY(${indicatorTop}px)`;
     }
 
     // -------------------------------------------------------
     // CASE STUDY MODAL
     // -------------------------------------------------------
-    window.openCaseStudy = function(slug) {
+    window.openCaseStudy = function (slug) {
         const project = projectsData.find(p => p.id === slug);
         if (!project) return;
 
         const titleTarget = document.getElementById('modal-title-target');
-        if (titleTarget) titleTarget.innerText = `${project.title} — Case Archive`;
+        if (titleTarget) titleTarget.innerText = `${project.title} — Case Study`;
 
         const actionBtn = document.getElementById('modal-action-btn');
         if (actionBtn) {
@@ -178,9 +178,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 return r.text();
             })
             .then(html => {
-                const parser  = new DOMParser();
-                const doc     = parser.parseFromString(html, 'text/html');
-                const csNode  = doc.querySelector('.case-study-container') || doc.querySelector('#project-container');
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const csNode = doc.querySelector('.case-study-container') || doc.querySelector('#project-container');
                 if (!csNode) throw new Error(`No content container in ${projectUrl}`);
 
                 const tempDiv = document.createElement('div');
@@ -214,12 +214,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     function makeStack(tagText, bodyContent) {
                         const stack = document.createElement('div');
                         stack.className = 'meta-stack-block';
-                        
+
                         const tag = document.createElement('div');
                         tag.className = 'meta-panel-tag-new';
                         tag.textContent = tagText;
                         stack.appendChild(tag);
-                        
+
                         const body = document.createElement('div');
                         body.className = 'meta-panel-body-new';
                         if (typeof bodyContent === 'string') {
@@ -239,13 +239,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     board.appendChild(makeStack('About', overviewText));
 
                     const otherKeys = Object.keys(metaPairs);
-                    let col2Key = otherKeys.find(k => ['media','client','tags'].includes(k.toLowerCase()));
+                    let col2Key = otherKeys.find(k => ['media', 'client', 'tags'].includes(k.toLowerCase()));
                     if (!col2Key && otherKeys.length > 0) col2Key = otherKeys[0];
 
                     if (col2Key) {
                         const stack = document.createElement('div');
                         stack.className = 'meta-stack-block';
-                        
+
                         const tag = document.createElement('div');
                         tag.className = 'meta-panel-tag-new';
                         tag.textContent = col2Key;
@@ -265,7 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     // Col 3 – Year or remaining key
                     const col3Key = otherKeys.find(k => k !== col2Key && k.toLowerCase() === 'year') ||
-                                    otherKeys.find(k => k !== col2Key);
+                        otherKeys.find(k => k !== col2Key);
                     if (col3Key) {
                         board.appendChild(makeStack(col3Key, metaPairs[col3Key]));
                     } else if (metaPairs['Year']) {
@@ -307,7 +307,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => syncRailLayout(), 80);
     };
 
-    window.closeCaseStudy = function(event) {
+    window.closeCaseStudy = function (event) {
         if (event) event.stopPropagation();
         if (!overlayContainer || !overlayContainer.classList.contains('active')) return;
         overlayContainer.classList.remove('active');
@@ -332,7 +332,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Scroll handler — expand to fullscreen mid-scroll, collapse at top/bottom
     if (modalSheet) {
         modalSheet.addEventListener('scroll', () => {
-            const pos    = modalSheet.scrollTop;
+            const pos = modalSheet.scrollTop;
             const bottom = modalSheet.scrollHeight - modalSheet.clientHeight;
             if (pos > 40 && pos < bottom - 40) {
                 overlayContainer.classList.add('expanded');

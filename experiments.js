@@ -225,6 +225,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!overlayEl) return;
         overlayEl.classList.remove('active');
         overlayEl.classList.remove('rail-active');
+        document.body.classList.remove('modal-nav-hidden');
+        if (sheetEl) sheetEl.style.transform = '';
         setTimeout(() => {
             document.body.style.overflow = 'auto';
             if (mediaContainer) mediaContainer.innerHTML = '';
@@ -240,6 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Scroll: toggle rail-active when scrolled, and track scroll position
+    let lastScrollTop = 0;
     if (sheetEl) {
         sheetEl.addEventListener('scroll', () => {
             const pos    = sheetEl.scrollTop;
@@ -249,6 +252,26 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 overlayEl.classList.remove('rail-active');
             }
+
+            // Mobile/Tablet navigation hide/show on scroll
+            if (window.innerWidth <= 1024) {
+                if (pos > lastScrollTop && pos > 50) {
+                    document.body.classList.add('modal-nav-hidden');
+                } else if (pos < lastScrollTop) {
+                    document.body.classList.remove('modal-nav-hidden');
+                }
+            }
+            lastScrollTop = pos <= 0 ? 0 : pos;
+
+            // Bottom scroll resistance: visual pull down tension
+            if (pos > bottom - 60 && bottom > 0) {
+                const overshoot = pos - (bottom - 60);
+                const tension = Math.min(10, overshoot * 0.15);
+                sheetEl.style.transform = `translateY(${tension}px)`;
+            } else {
+                sheetEl.style.transform = '';
+            }
+
             trackRailScroll(pos);
         });
 
