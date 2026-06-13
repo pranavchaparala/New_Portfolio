@@ -56,6 +56,19 @@ document.addEventListener('DOMContentLoaded', () => {
             thumb.className = 'home-experiment-thumb project-card-container';
             thumb.setAttribute('data-haptic', '');
 
+            // Header (same as project cards)
+            const header = document.createElement('div');
+            header.className = 'project-header';
+            const nameSpan = document.createElement('span');
+            nameSpan.className = 'project-name';
+            nameSpan.textContent = exp.title;
+            const tagSpan = document.createElement('span');
+            tagSpan.className = 'project-year';
+            tagSpan.textContent = exp.tag || '';
+            header.appendChild(nameSpan);
+            header.appendChild(tagSpan);
+            thumb.appendChild(header);
+
             const mediaWrap = document.createElement('div');
             mediaWrap.className = 'thumb-media-wrap';
 
@@ -90,11 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             thumb.appendChild(mediaWrap);
 
-            const title = document.createElement('div');
-            title.className = 'thumb-title';
-            title.textContent = exp.title;
-            thumb.appendChild(title);
-
             // Click → open experiment modal
             thumb.addEventListener('click', () => {
                 if (typeof window.openExperimentModal === 'function') {
@@ -113,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateClocks() {
         const now = new Date();
-        
+
         // NYC Local Time
         const nycTimeStr = now.toLocaleTimeString('en-US', {
             timeZone: 'America/New_York',

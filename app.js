@@ -96,6 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const image = document.createElement('img');
             image.src = img.src;
             image.alt = project.title;
+            image.loading = 'lazy';
             frame.appendChild(image);
             gallery.appendChild(frame);
         });
@@ -253,7 +254,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         const listEl = document.createElement('div');
                         listEl.className = 'meta-panel-body-new list-layout';
-                        metaPairs[col2Key].split(',').map(s => s.trim()).filter(Boolean).forEach(v => {
+                        // Use regex to split on commas not preceded/followed by spaces (avoid splitting "Product Design, UX Research")
+                        metaPairs[col2Key].split(/\s*,\s*/).map(s => s.trim()).filter(Boolean).forEach(v => {
                             const row = document.createElement('div');
                             row.className = 'meta-list-row';
                             row.textContent = v;
@@ -296,6 +298,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Open modal
         overlayContainer.classList.remove('expanded');
         overlayContainer.classList.add('active');
+        overlayContainer.setAttribute('role', 'dialog');
+        overlayContainer.setAttribute('aria-modal', 'true');
+        overlayContainer.setAttribute('aria-labelledby', 'modal-title-target');
         if (modalSheet) modalSheet.scrollTop = 0;
         document.body.style.overflow = 'hidden';
 
@@ -328,6 +333,13 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.target === overlayContainer) closeCaseStudy(e);
         });
     }
+
+    // Escape key closes modal
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && overlayContainer && overlayContainer.classList.contains('active')) {
+            closeCaseStudy(e);
+        }
+    });
 
     // Scroll handler — expand to fullscreen mid-scroll, collapse at top/bottom
     if (modalSheet) {
